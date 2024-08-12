@@ -105,7 +105,7 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, conf, hover, max_width
 	if tab.active_pane.is_zoomed then
 		zoomed = utf8.char(0x1F50D) .. " "
 	end
-	return " " .. tab.tab_index .. ": " .. zoomed .. title .. " "
+	return " " .. tab.tab_index + 1 .. ": " .. zoomed .. title .. " "
 end)
 
 -- Load the keybindings from keys.lua --
