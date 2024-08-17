@@ -1,4 +1,5 @@
 local wezterm = require("wezterm")
+local tabs = require("utils/tabs")
 -- local act = wezterm.action
 local mux = wezterm.mux
 
@@ -59,9 +60,6 @@ wezterm.on("update-right-status", function(window, _)
 		SOLID_LEFT_ARROW = utf8.char(0xe0b2)
 	end
 
-	if window:active_tab():tab_id() ~= 1 then
-		ARROW_FOREGROUND = { Foreground = { Color = "#1e2030" } }
-	end -- arrow color based on if tab is first pane
 
 	window:set_right_status(wezterm.format({
 		{ Background = { Color = "#b7bdf8" } },
@@ -76,6 +74,9 @@ wezterm.on("update-right-status", function(window, _)
 		ARROW_FOREGROUND,
 		{ Text = SOLID_LEFT_ARROW },
 	}))
+        if tabs.get_tab_index(window) ~= 0 then
+                ARROW_FOREGROUND = { Foreground = { Color = "#1e2030" } }
+        end -- arrow color based on if tab is first pane
 end)
 
 -- Set the Window title
