@@ -38,78 +38,13 @@ config.background = {
 		},
 	},
 }
+
+-- Load the event handlers --
 require("events.gui-startup").setup()
+require("events.format-tab-title").setup()
+require("events.format-window-title").setup()
+require("events.update-right-status").setup()
 
--- mux status
-wezterm.on("update-right-status", function(window, _)
-	local SOLID_LEFT_ARROW = " " .. utf8.char(0xe0b2)
-	local SOLID_RIGHT_ARROW = utf8.char(0xe0b0) .. " "
-	local ARROW_FOREGROUND = { Foreground = { Color = "#c6a0f6" } }
-	local date = wezterm.strftime("%Y-%m-%d %H:%M")
-	local prefix = ""
-
-	if window:leader_is_active() then
-		prefix = " " .. utf8.char(0x1f30a) -- ocean wave
-		SOLID_LEFT_ARROW = utf8.char(0xe0b2)
-	end
-
-	if tabs.get_tab_index(window) ~= 0 then
-		ARROW_FOREGROUND = { Foreground = { Color = "#1e2030" } }
-	end -- arrow color based on if tab is first pane
-
-	window:set_right_status(wezterm.format({
-		{ Background = { Color = "#b7bdf8" } },
-		{ Foreground = { Color = "#1e2030" } },
-		{ Text = SOLID_RIGHT_ARROW },
-		{ Text = date },
-	}))
-
-	window:set_left_status(wezterm.format({
-		{ Background = { Color = "#b7bdf8" } },
-		{ Text = prefix },
-		ARROW_FOREGROUND,
-		{ Text = SOLID_LEFT_ARROW },
-	}))
-end)
-
--- Set the Window title
-wezterm.on("format-window-title", function(tab, pane, tabs, panes, config)
-	local zoomed = ""
-	if tab.active_pane.is_zoomed then
-		zoomed = "[Z] "
-	end
-
-	local index = ""
-	if #tabs > 1 then
-		index = string.format("[%d/%d] ", tab.tab_index + 1, #tabs)
-	end
-
-	return zoomed .. index .. tab.active_pane.title
-end)
-
--- This function returns the suggested title for a tab.
--- It prefers the title that was set via `tab:set_title()`
--- or `wezterm cli set-tab-title`, but falls back to the
--- title of the active pane in that tab.
-local function tab_title(tab_info)
-	local title = tab_info.tab_title
-	-- if the tab title is explicitly set, take that
-	if title and #title > 0 then
-		return title
-	end
-	-- Otherwise, use the title from the active pane
-	-- in that tab
-	return tab_info.active_pane.title
-end
-
-wezterm.on("format-tab-title", function(tab, tabs, panes, conf, hover, max_width)
-	local title = tab_title(tab)
-	local zoomed = ""
-	if tab.active_pane.is_zoomed then
-		zoomed = utf8.char(0x1F50D) .. " "
-	end
-	return " " .. tab.tab_index + 1 .. ": " .. zoomed .. title .. " "
-end)
 
 -- Load the keybindings from keys.lua --
 local keys = require("keys")
