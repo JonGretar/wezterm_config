@@ -1,4 +1,6 @@
 local wezterm = require("wezterm")
+local tabs = require("../utils/tabs")
+
 local M = {}
 
 M.setup = function()

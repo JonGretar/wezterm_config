@@ -1,6 +1,4 @@
 local wezterm = require("wezterm")
-local tabs = require("utils/tabs")
-
 local config = wezterm.config_builder()
 
 -- Visual Decorations --
