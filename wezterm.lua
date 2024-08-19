@@ -45,7 +45,6 @@ require("events.update-right-status").setup()
 
 
 -- Load the keybindings from keys.lua --
-local keys = require("keys")
-keys.make_config(config)
+require("keys").make_config(config)
 
 return config
