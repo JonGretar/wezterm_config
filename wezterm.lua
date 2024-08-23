@@ -20,6 +20,8 @@ config.enable_scroll_bar = false
 config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = false
 config.tab_bar_at_bottom = false
+config.show_tabs_in_tab_bar = true
+config.show_new_tab_button_in_tab_bar = false
 
 -- Keyboard fiddling
 config.send_composed_key_when_left_alt_is_pressed = true
