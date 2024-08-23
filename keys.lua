@@ -35,6 +35,9 @@ local function make_config(config)
 			action = act.ActivateKeyTable({
 				name = "pane_management",
 				one_shot = false,
+				timeout_milliseconds = 4000,
+				until_unknown = false,
+				prevent_fallback = true,
 			}),
 		},
 		{
