@@ -8,9 +8,15 @@ M.setup = function()
 	wezterm.on("update-right-status", function(window, _)
 		local SOLID_LEFT_ARROW = " " .. utf8.char(0xe0b2)
 		local SOLID_RIGHT_ARROW = utf8.char(0xe0b0) .. " "
+		local RIGHT_ARROW = utf8.char(0xe0b1)
 		local ARROW_FOREGROUND = { Foreground = { Color = "#c6a0f6" } }
 		local date = wezterm.strftime("%Y-%m-%d %H:%M")
 		local prefix = ""
+
+		local key_table = ""
+		if window:active_key_table() then
+			key_table = RIGHT_ARROW .. " " .. wezterm.nerdfonts.md_keyboard .. " " .. window:active_key_table() .. " "
+		end
 
 		if window:leader_is_active() then
 			prefix = " " .. utf8.char(0x1f30a) -- ocean wave
@@ -22,6 +28,10 @@ M.setup = function()
 		end -- arrow color based on if tab is first pane
 
 		window:set_right_status(wezterm.format({
+
+			{ Text = key_table },
+			"ResetAttributes",
+
 			{ Background = { Color = "#b7bdf8" } },
 			{ Foreground = { Color = "#1e2030" } },
 			{ Text = SOLID_RIGHT_ARROW },
