@@ -1,4 +1,5 @@
 local wezterm = require("wezterm")
+local nf = wezterm.nerdfonts
 local tabs = require("../utils/tabs")
 
 local M = {}
@@ -6,8 +7,9 @@ local M = {}
 M.setup = function()
 	-- mux status
 	wezterm.on("update-right-status", function(window, _)
-		local SOLID_LEFT_ARROW = " " .. utf8.char(0xe0b2)
-		local SOLID_RIGHT_ARROW = utf8.char(0xe0b0) .. " "
+		-- local SOLID_LEFT_ARROW = " " .. utf8.char(0xe0b2)
+		local SOLID_LEFT_ARROW = " " .. nf.pl_right_hard_divider
+		local SOLID_RIGHT_ARROW = nf.pl_left_hard_divider .. " "
 		local RIGHT_ARROW = utf8.char(0xe0b1)
 		local ARROW_FOREGROUND = { Foreground = { Color = "#c6a0f6" } }
 		local date = wezterm.strftime("%Y-%m-%d %H:%M")
@@ -20,7 +22,7 @@ M.setup = function()
 
 		if window:leader_is_active() then
 			prefix = " " .. utf8.char(0x1f30a) -- ocean wave
-			SOLID_LEFT_ARROW = utf8.char(0xe0b2)
+			SOLID_LEFT_ARROW = nf.pl_right_hard_divider
 		end
 
 		if tabs.get_tab_index(window) ~= 0 then

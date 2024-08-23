@@ -1,4 +1,5 @@
 local wezterm = require("wezterm")
+local nf = wezterm.nerdfonts
 local M = {}
 
 M.setup = function()
@@ -21,7 +22,7 @@ M.setup = function()
 		local title = tab_title(tab)
 		local zoomed = ""
 		if tab.active_pane.is_zoomed then
-			zoomed = utf8.char(0x1F50D) .. " "
+			zoomed = nf.md_magnify .. " "
 		end
 		return " " .. tab.tab_index + 1 .. ": " .. zoomed .. title .. " "
 	end)
