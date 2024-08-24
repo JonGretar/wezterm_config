@@ -6,7 +6,7 @@ local M = {}
 
 M.setup = function()
 	-- mux status
-	wezterm.on("update-right-status", function(window, _)
+	wezterm.on("update-status", function(window, _)
 		-- local SOLID_LEFT_ARROW = " " .. utf8.char(0xe0b2)
 		local SOLID_LEFT_ARROW = " " .. nf.pl_right_hard_divider
 		local SOLID_RIGHT_ARROW = nf.pl_left_hard_divider .. " "

@@ -43,7 +43,7 @@ config.background = {
 require("events.gui-startup").setup()
 require("events.format-tab-title").setup()
 require("events.format-window-title").setup()
-require("events.update-right-status").setup()
+require("events.update-status").setup()
 
 -- Load the keybindings from keys.lua --
 require("keys").make_config(config)
