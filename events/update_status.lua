@@ -6,14 +6,8 @@ local function left_status(window, pane)
 	local elements = {}
 	local ARROW_FOREGROUND = { Foreground = { Color = "#c6a0f6" } }
 	local SOLID_LEFT_ARROW = " " .. nf.pl_right_hard_divider
-	local LEADER_ICON = " " .. utf8.char(0x1f30a) -- ocean wave
 
 	table.insert(elements, { Background = { Color = "#b7bdf8" } })
-
-	if window:leader_is_active() then
-		table.insert(elements, { Text = LEADER_ICON })
-	end
-
 	-- arrow color based on if tab is first pane
 	if tabs.get_tab_index(window) ~= 0 then
 		table.insert(elements, { Foreground = { Color = "#1e2030" } })
@@ -29,27 +23,42 @@ local function right_status(window, pane)
 	local elements = {}
 
 	local SOLID_RIGHT_ARROW = nf.pl_left_hard_divider .. " "
-	local RIGHT_ARROW = utf8.char(0xe0b1)
+	local RIGHT_ARROW = nf.pl_left_soft_divider
+	local LEADER_ICON = nf.weather_wind_direction
+
+	local active_bg = "#1e2030"
+
+	if window:leader_is_active() then
+		table.insert(elements, "ResetAttributes")
+		table.insert(elements, { Foreground = { Color = active_bg } })
+		active_bg = "#bb0000"
+		table.insert(elements, { Background = { Color = active_bg } })
+		table.insert(elements, { Text = SOLID_RIGHT_ARROW })
+		table.insert(elements, { Text = LEADER_ICON .. "  " })
+		table.insert(elements, "ResetAttributes")
+	end
 
 	-- Key Table
 	if window:active_key_table() then
 		local text = table.concat({
-			RIGHT_ARROW,
-			" ",
-			wezterm.nerdfonts.md_keyboard,
+			nf.md_keyboard,
 			window:active_key_table(),
-			" ",
 		}, " ")
-		table.insert(elements, { Text = text })
+		table.insert(elements, { Foreground = { Color = active_bg } })
+		active_bg = "orange"
+		table.insert(elements, { Background = { Color = active_bg } })
+		table.insert(elements, { Text = SOLID_RIGHT_ARROW })
+		table.insert(elements, { Text = text .. " " })
 		table.insert(elements, "ResetAttributes")
 	end
 
 	-- Date pill
 	local date = wezterm.strftime("%Y-%m-%d %H:%M")
 	table.insert(elements, { Background = { Color = "#b7bdf8" } })
-	table.insert(elements, { Foreground = { Color = "#1e2030" } })
+	table.insert(elements, { Foreground = { Color = active_bg } })
 	table.insert(elements, { Text = SOLID_RIGHT_ARROW })
-	table.insert(elements, { Text = date })
+	table.insert(elements, { Foreground = { Color = "#1e2030" } })
+	table.insert(elements, { Text = nf.fa_clock_o .. " " .. date })
 
 	window:set_right_status(wezterm.format(elements))
 end
