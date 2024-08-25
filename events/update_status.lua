@@ -1,6 +1,6 @@
 local wezterm = require("wezterm")
 local nf = wezterm.nerdfonts
-local tabs = require("../utils/tabs")
+local tabs = require("utils.tabs")
 
 local function left_status(window, pane)
 	local elements = {}
