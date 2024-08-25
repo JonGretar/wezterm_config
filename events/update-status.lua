@@ -2,8 +2,6 @@ local wezterm = require("wezterm")
 local nf = wezterm.nerdfonts
 local tabs = require("../utils/tabs")
 
-local M = {}
-
 local function left_status(window, pane)
 	local elements = {}
 	local ARROW_FOREGROUND = { Foreground = { Color = "#c6a0f6" } }
@@ -56,12 +54,7 @@ local function right_status(window, pane)
 	window:set_right_status(wezterm.format(elements))
 end
 
-M.setup = function()
-	-- mux status
-	wezterm.on("update-status", function(window, pane)
-		left_status(window, pane)
-		right_status(window, pane)
-	end)
-end
-
-return M
+wezterm.on("update-status", function(window, pane)
+	left_status(window, pane)
+	right_status(window, pane)
+end)

@@ -40,10 +40,10 @@ config.background = {
 }
 
 -- Load the event handlers --
-require("events.gui-startup").setup()
-require("events.format-tab-title").setup()
-require("events.format-window-title").setup()
-require("events.update-status").setup()
+require("events.gui-startup")
+require("events.format-tab-title")
+require("events.format-window-title")
+require("events.update-status")
 
 -- Load the keybindings from keys.lua --
 require("keys").make_config(config)
