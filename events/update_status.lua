@@ -19,22 +19,39 @@ local function left_status(window, pane)
 	window:set_left_status(wezterm.format(elements))
 end
 
+local function get_active_pane_info(pane)
+	local pane_list = pane:tab():panes_with_info()
+	for _, item in ipairs(pane_list) do
+		if item.is_active then
+			return item
+		end
+	end
+end
+
 local function right_status(window, pane)
 	local elements = {}
 
 	local SOLID_RIGHT_ARROW = nf.pl_left_hard_divider .. " "
-	local RIGHT_ARROW = nf.pl_left_soft_divider
-	local LEADER_ICON = nf.weather_wind_direction
 
 	local active_bg = "#1e2030"
 
-	if window:leader_is_active() then
+	if get_active_pane_info(pane).is_zoomed then
+		table.insert(elements, { Foreground = { Color = active_bg } })
+		active_bg = "#00b0bb"
+		table.insert(elements, { Background = { Color = active_bg } })
+		table.insert(elements, { Text = SOLID_RIGHT_ARROW })
+		table.insert(elements, { Text = nf.md_magnify .. " Zoomed " })
 		table.insert(elements, "ResetAttributes")
+	end
+
+	if window:leader_is_active() then
+		-- table.insert(elements, "ResetAttributes")
 		table.insert(elements, { Foreground = { Color = active_bg } })
 		active_bg = "#bb0000"
 		table.insert(elements, { Background = { Color = active_bg } })
 		table.insert(elements, { Text = SOLID_RIGHT_ARROW })
-		table.insert(elements, { Text = LEADER_ICON .. "  " })
+		table.insert(elements, { Foreground = { Color = "#1e2030" } })
+		table.insert(elements, { Text = nf.weather_wind_direction .. "  " })
 		table.insert(elements, "ResetAttributes")
 	end
 
@@ -48,6 +65,7 @@ local function right_status(window, pane)
 		active_bg = "orange"
 		table.insert(elements, { Background = { Color = active_bg } })
 		table.insert(elements, { Text = SOLID_RIGHT_ARROW })
+		table.insert(elements, { Foreground = { Color = "#1e2030" } })
 		table.insert(elements, { Text = text .. " " })
 		table.insert(elements, "ResetAttributes")
 	end
