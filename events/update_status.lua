@@ -1,6 +1,6 @@
 local wezterm = require("wezterm")
 local nf = wezterm.nerdfonts
-local tabs = require("utils.tabs")
+local helpers = require("utils.helpers")
 
 local function left_status(window, pane)
 	local elements = {}
@@ -13,7 +13,7 @@ local function left_status(window, pane)
 	table.insert(elements, { Text = " " .. nf.dev_terminal .. " " })
 
 	-- arrow color based on if tab is first pane
-	if tabs.get_tab_index(window) ~= 0 then
+	if helpers.get_tab_index(window) ~= 0 then
 		table.insert(elements, { Foreground = { Color = "#1e2030" } })
 	else
 		table.insert(elements, ARROW_FOREGROUND)
@@ -23,15 +23,6 @@ local function left_status(window, pane)
 	window:set_left_status(wezterm.format(elements))
 end
 
-local function get_active_pane_info(pane)
-	local pane_list = pane:tab():panes_with_info()
-	for _, item in ipairs(pane_list) do
-		if item.is_active then
-			return item
-		end
-	end
-end
-
 local function right_status(window, pane)
 	local elements = {}
 
@@ -39,7 +30,7 @@ local function right_status(window, pane)
 
 	local active_bg = "#1e2030"
 
-	if get_active_pane_info(pane).is_zoomed then
+	if helpers.get_active_pane_info(pane).is_zoomed then
 		table.insert(elements, { Foreground = { Color = active_bg } })
 		active_bg = "#00b0bb"
 		table.insert(elements, { Background = { Color = active_bg } })
