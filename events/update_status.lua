@@ -30,15 +30,6 @@ local function right_status(window, pane)
 
 	local active_bg = "#1e2030"
 
-	if helpers.get_active_pane_info(pane).is_zoomed then
-		table.insert(elements, { Foreground = { Color = active_bg } })
-		active_bg = "#00b0bb"
-		table.insert(elements, { Background = { Color = active_bg } })
-		table.insert(elements, { Text = SOLID_RIGHT_ARROW })
-		table.insert(elements, { Text = nf.md_magnify .. " Zoomed " })
-		table.insert(elements, "ResetAttributes")
-	end
-
 	if window:leader_is_active() then
 		-- table.insert(elements, "ResetAttributes")
 		table.insert(elements, { Foreground = { Color = active_bg } })
@@ -62,6 +53,16 @@ local function right_status(window, pane)
 		table.insert(elements, { Text = SOLID_RIGHT_ARROW })
 		table.insert(elements, { Foreground = { Color = "#1e2030" } })
 		table.insert(elements, { Text = text .. " " })
+		table.insert(elements, "ResetAttributes")
+	end
+
+	if helpers.get_active_pane_info(pane).is_zoomed then
+		table.insert(elements, { Foreground = { Color = active_bg } })
+		active_bg = "#00b0bb"
+		table.insert(elements, { Background = { Color = active_bg } })
+		table.insert(elements, { Text = SOLID_RIGHT_ARROW })
+		table.insert(elements, { Foreground = { Color = "#1e2030" } })
+		table.insert(elements, { Text = nf.md_magnify .. " Zoomed " })
 		table.insert(elements, "ResetAttributes")
 	end
 
