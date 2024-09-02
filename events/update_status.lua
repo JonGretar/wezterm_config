@@ -67,12 +67,12 @@ local function right_status(window, pane)
 	end
 
 	-- Date pill
-	local date = wezterm.strftime("%Y-%m-%d %H:%M")
+	local date = wezterm.strftime(" %Y-%m-%d %H:%M ")
 	table.insert(elements, { Background = { Color = "#b7bdf8" } })
 	table.insert(elements, { Foreground = { Color = active_bg } })
 	table.insert(elements, { Text = SOLID_RIGHT_ARROW })
 	table.insert(elements, { Foreground = { Color = "#1e2030" } })
-	table.insert(elements, { Text = nf.fa_clock_o .. " " .. date .. " " })
+	table.insert(elements, { Text = nf.fa_clock_o .. date })
 
 	window:set_right_status(wezterm.format(elements))
 end
