@@ -72,7 +72,7 @@ local function right_status(window, pane)
 	table.insert(elements, { Foreground = { Color = active_bg } })
 	table.insert(elements, { Text = SOLID_RIGHT_ARROW })
 	table.insert(elements, { Foreground = { Color = "#1e2030" } })
-	table.insert(elements, { Text = nf.fa_clock_o .. " " .. date })
+	table.insert(elements, { Text = nf.fa_clock_o .. " " .. date .. " " })
 
 	window:set_right_status(wezterm.format(elements))
 end
