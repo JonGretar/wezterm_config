@@ -8,8 +8,6 @@ local function make_config(config)
 	config.keys = {
 		{ key = "P", mods = "CMD|SHIFT", action = wezterm.action.ActivateCommandPalette },
 		{ key = "Enter", mods = "CMD", action = act.ActivateCopyMode },
-		{ key = "d", mods = "CMD|SHIFT", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
-		{ key = "l", mods = "CMD|SHIFT", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 		{ key = "LeftArrow", mods = "CMD|SHIFT", action = act.ActivateTabRelative(-1) },
 		{ key = "RightArrow", mods = "CMD|SHIFT", action = act.ActivateTabRelative(1) },
 		{ key = "LeftArrow", mods = "CMD|ALT", action = act.ActivateTabRelative(-1) },
