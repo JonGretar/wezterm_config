@@ -76,6 +76,13 @@ local function make_config(config)
 			{ key = "s", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 			{ key = "v", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
 
+			-- Rotate Panes
+			{ key = "r", action = act.RotatePanes("Clockwise") },
+			{ key = "R", mods = "SHIFT", action = act.RotatePanes("CounterClockwise") },
+
+			-- Swap pane position
+			{ key = "m", action = act.PaneSelect({ mode = "SwapWithActive" }) },
+
 			-- Zoom pane
 			{ key = "z", action = act.TogglePaneZoomState },
 
