@@ -86,6 +86,14 @@ local function make_config(config)
 			-- Zoom pane
 			{ key = "z", action = act.TogglePaneZoomState },
 
+			-- Take the selected pane and create a new tab with it.
+			{
+				key = "!",
+				action = wezterm.action_callback(function(_, pane)
+					local tab, window = pane:move_to_new_tab()
+				end),
+			},
+
 			-- Tab Selection
 			{ key = "1", action = act.ActivateTab(0) },
 			{ key = "2", action = act.ActivateTab(1) },
