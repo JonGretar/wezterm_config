@@ -31,7 +31,7 @@ local function make_config(config)
 			key = "w",
 			mods = "LEADER",
 			action = act.ActivateKeyTable({
-				name = "pane_management",
+				name = "PaneManagement",
 				one_shot = false,
 				timeout_milliseconds = 4000,
 				until_unknown = false,
@@ -49,7 +49,7 @@ local function make_config(config)
 	}
 
 	config.key_tables = {
-		pane_management = {
+		PaneManagement = {
 			-- Pane Activation
 			{ key = "LeftArrow", action = act.ActivatePaneDirection("Left") },
 			{ key = "h", action = act.ActivatePaneDirection("Left") },
