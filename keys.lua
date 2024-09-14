@@ -79,6 +79,17 @@ local function make_config(config)
 			-- Zoom pane
 			{ key = "z", action = act.TogglePaneZoomState },
 
+			-- Tab Selection
+			{ key = "1", action = act.ActivateTab(0) },
+			{ key = "2", action = act.ActivateTab(1) },
+			{ key = "3", action = act.ActivateTab(2) },
+			{ key = "4", action = act.ActivateTab(3) },
+			{ key = "5", action = act.ActivateTab(4) },
+			{ key = "6", action = act.ActivateTab(5) },
+			{ key = "7", action = act.ActivateTab(6) },
+			{ key = "8", action = act.ActivateTab(7) },
+			{ key = "9", action = act.ActivateTab(8) },
+
 			-- Exit pane management mode
 			{ key = "Escape", action = "PopKeyTable" },
 			{ key = "Enter", action = "PopKeyTable" },
