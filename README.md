@@ -19,13 +19,18 @@ notification of zoom level and the active key table.
 
 `<Leader> w` enters the terminal in to pane management mode. 
 
- - *direction_keys*: Activate pane in direction 
- - *SHIFT+direction_keys*: Resize the active pane
- - *s*: Split pane horizontal
- - *v*: Split pane vertically
- - *r*: Rotate panes 
- - *m*: Swap pane with another
- - *z*: Zoom pane
- - *<number>*: Activate tab
- - *!*: Split pane into it's own tab
- - *enter or esc*: Exit pane management mode.
+| Key         | Action                       |
+|:-----------:|:-----------------------------|
+| *h, j, k, l* | Activate pane in direction  |
+| *Arrow*     | Activate pane in direction   |
+| *SHIFT + h, j, k, l* | Resize the active pane  |
+| *SHIFT + Arrow* | Resize the active pane   |
+| *s*         | Split pane horizontal        |
+| *v*         | Split pane vertically        |
+| *r*         | Rotate panes                 |
+| *m*         | Swap pane with another       |
+| *z*         | Zoom pane                    |
+| *1-9*       | Activate tab                 |
+| *!*         | Split pane into it's own tab |
+| *enter or esc* | Exit pane management mode |
+
