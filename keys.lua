@@ -26,6 +26,18 @@ local function make_config(config)
 			}),
 		},
 
+		-- Launchers
+		{
+			key = "l",
+			mods = "LEADER",
+			action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY|LAUNCH_MENU_ITEMS|DOMAINS" }),
+		},
+		{
+			key = "s",
+			mods = "LEADER",
+			action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }),
+		},
+
 		-- Acticate Pane Management mode.
 		{
 			key = "w",

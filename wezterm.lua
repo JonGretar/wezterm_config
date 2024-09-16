@@ -1,5 +1,6 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
+local helpers = require("utils.helpers")
 
 -- Visual Decorations --
 config.window_background_opacity = 0.8
@@ -47,5 +48,9 @@ require("events.update_status")
 
 -- Load the keybindings from keys.lua --
 require("keys").make_config(config)
+
+if helpers.file_exists(wezterm.config_dir .. "/domains/ssh_domains.lua") then
+	config.ssh_domains = require("domains.ssh_domains")
+end
 
 return config

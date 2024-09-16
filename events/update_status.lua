@@ -12,6 +12,8 @@ local function left_status(window, pane)
 
 	table.insert(elements, { Text = " " .. nf.dev_terminal .. " " })
 
+	table.insert(elements, { Text = " " .. window:active_workspace() .. " " })
+
 	-- arrow color based on if tab is first pane
 	if helpers.get_tab_index(window) ~= 0 then
 		table.insert(elements, { Foreground = { Color = "#1e2030" } })
