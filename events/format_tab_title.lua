@@ -3,7 +3,7 @@ local nf = wezterm.nerdfonts
 
 local function number_to_icon(number)
 	if number == 0 then
-		return nf.md_numeric_0_box
+		return nf.md_numeric_0
 	elseif number == 1 then
 		return nf.md_numeric_1
 	elseif number == 2 then
