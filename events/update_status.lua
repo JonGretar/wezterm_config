@@ -12,7 +12,17 @@ local function left_status(window, pane)
 
 	table.insert(elements, { Text = " " .. nf.dev_terminal .. " " })
 
-	table.insert(elements, { Text = " " .. window:active_workspace() .. " " })
+	if pane:get_domain_name() ~= "local" then
+		table.insert(elements, { Text = " " .. nf.pl_right_soft_divider })
+		table.insert(elements, { Text = " " .. nf.cod_workspace_trusted })
+		table.insert(elements, { Text = " " .. pane:get_domain_name() })
+	end
+
+	if window:active_workspace() ~= "default" then
+		table.insert(elements, { Text = " " .. nf.pl_right_soft_divider })
+		table.insert(elements, { Text = " " .. nf.md_domain })
+		table.insert(elements, { Text = " " .. window:active_workspace() })
+	end
 
 	-- arrow color based on if tab is first pane
 	if helpers.get_tab_index(window) ~= 0 then
