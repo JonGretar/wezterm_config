@@ -1,11 +1,16 @@
 # Wezterm configuration
 
+![](docs/full.jpg)
+
 This is my personal configuration for [Wezterm](https://wezfurlong.org/wezterm/).
 Place it in your `~/.config/wezterm/` directory.
 
 ## Status bar
 
-Status bar is simple. Left of tabs is just a nice icon. 
+Status bar is simple. 
+
+Left side shows a nice icon and then the workspace name if not default.
+Tabs show the zoom status. Tab numbers are nerdfont icons that pop. 
 
 ![](docs/left_status.jpg)
 
