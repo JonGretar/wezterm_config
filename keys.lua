@@ -51,12 +51,17 @@ local function make_config(config)
 				prevent_fallback = true,
 			}),
 		},
+
+		-- Acticate Tab Management mode.
 		{
-			key = "W",
-			mods = "LEADER|SHIFT",
+			key = "t",
+			mods = "LEADER",
 			action = act.ActivateKeyTable({
-				name = "pane_management",
-				timeout_milliseconds = 2000,
+				name = "TabManagement",
+				one_shot = false,
+				timeout_milliseconds = 4000,
+				until_unknown = false,
+				prevent_fallback = true,
 			}),
 		},
 	}
@@ -117,6 +122,44 @@ local function make_config(config)
 			{ key = "9", action = act.ActivateTab(8) },
 
 			-- Exit pane management mode
+			{ key = "Escape", action = "PopKeyTable" },
+			{ key = "Enter", action = "PopKeyTable" },
+		},
+		TabManagement = {
+
+			{ key = "LeftArrow", action = act.ActivateTabRelative(-1) },
+			{ key = "h", action = act.ActivateTabRelative(-1) },
+			{ key = "RightArrow", action = act.ActivateTabRelative(1) },
+			{ key = "l", action = act.ActivateTabRelative(1) },
+
+			{ key = "LeftArrow", mods = "SHIFT", action = act.MoveTabRelative(-1) },
+			{ key = "h", mods = "SHIFT", action = act.MoveTabRelative(-1) },
+			{ key = "RightArrow", mods = "SHIFT", action = act.MoveTabRelative(1) },
+			{ key = "l", mods = "SHIFT", action = act.MoveTabRelative(1) },
+
+			{ key = "1", action = act.ActivateTab(0) },
+			{ key = "2", action = act.ActivateTab(1) },
+			{ key = "3", action = act.ActivateTab(2) },
+			{ key = "4", action = act.ActivateTab(3) },
+			{ key = "5", action = act.ActivateTab(4) },
+			{ key = "6", action = act.ActivateTab(5) },
+			{ key = "7", action = act.ActivateTab(6) },
+			{ key = "8", action = act.ActivateTab(7) },
+			{ key = "9", action = act.ActivateTab(8) },
+
+			{
+				key = "r",
+				action = act.PromptInputLine({
+					description = "Enter new name for tab",
+					action = wezterm.action_callback(function(window, pane, line)
+						if line then
+							window:active_tab():set_title(line)
+						end
+					end),
+				}),
+			},
+
+			-- Exit tab management mode
 			{ key = "Escape", action = "PopKeyTable" },
 			{ key = "Enter", action = "PopKeyTable" },
 		},
