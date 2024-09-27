@@ -102,6 +102,9 @@ local function make_config(config)
 			-- Zoom pane
 			{ key = "z", action = act.TogglePaneZoomState },
 
+			-- Close the active pane
+			{ key = "X", mods = "SHIFT", action = act.CloseCurrentPane({ confirm = false }) },
+
 			-- Take the selected pane and create a new tab with it.
 			{
 				key = "!",
