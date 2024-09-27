@@ -130,16 +130,19 @@ local function make_config(config)
 		},
 		TabManagement = {
 
+			-- Select Tab
 			{ key = "LeftArrow", action = act.ActivateTabRelative(-1) },
 			{ key = "h", action = act.ActivateTabRelative(-1) },
 			{ key = "RightArrow", action = act.ActivateTabRelative(1) },
 			{ key = "l", action = act.ActivateTabRelative(1) },
 
+			-- Move Tab
 			{ key = "LeftArrow", mods = "SHIFT", action = act.MoveTabRelative(-1) },
 			{ key = "h", mods = "SHIFT", action = act.MoveTabRelative(-1) },
 			{ key = "RightArrow", mods = "SHIFT", action = act.MoveTabRelative(1) },
 			{ key = "l", mods = "SHIFT", action = act.MoveTabRelative(1) },
 
+			-- Activate Tab Number
 			{ key = "1", action = act.ActivateTab(0) },
 			{ key = "2", action = act.ActivateTab(1) },
 			{ key = "3", action = act.ActivateTab(2) },
@@ -150,6 +153,7 @@ local function make_config(config)
 			{ key = "8", action = act.ActivateTab(7) },
 			{ key = "9", action = act.ActivateTab(8) },
 
+			-- Rename Tab
 			{
 				key = "r",
 				action = act.PromptInputLine({
@@ -161,6 +165,12 @@ local function make_config(config)
 					end),
 				}),
 			},
+
+			-- Create Tab
+			{ key = "n", action = act.SpawnTab("CurrentPaneDomain") },
+
+			-- Close Current Tab
+			{ key = "X", mods = "SHIFT", action = act.CloseCurrentTab({ confirm = true }) },
 
 			-- Exit tab management mode
 			{ key = "Escape", action = "PopKeyTable" },
