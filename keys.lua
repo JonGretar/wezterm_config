@@ -46,7 +46,7 @@ local function make_config(config)
 			action = act.ActivateKeyTable({
 				name = "PaneManagement",
 				one_shot = false,
-				timeout_milliseconds = 4000,
+				timeout_milliseconds = 8000,
 				until_unknown = false,
 				prevent_fallback = true,
 			}),
@@ -59,7 +59,7 @@ local function make_config(config)
 			action = act.ActivateKeyTable({
 				name = "TabManagement",
 				one_shot = false,
-				timeout_milliseconds = 4000,
+				timeout_milliseconds = 8000,
 				until_unknown = false,
 				prevent_fallback = true,
 			}),
@@ -156,18 +156,36 @@ local function make_config(config)
 			-- Rename Tab
 			{
 				key = "r",
-				action = act.PromptInputLine({
-					description = "Enter new name for tab",
-					action = wezterm.action_callback(function(window, pane, line)
-						if line then
-							window:active_tab():set_title(line)
-						end
-					end),
+				action = act.Multiple({
+					"PopKeyTable",
+					act.PromptInputLine({
+						description = "Enter new name for tab",
+						action = wezterm.action_callback(function(window, pane, line)
+							if line then
+								window:active_tab():set_title(line)
+							end
+						end),
+					}),
 				}),
 			},
 
 			-- Create Tab
 			{ key = "n", action = act.SpawnTab("CurrentPaneDomain") },
+			{
+				key = "N",
+				mods = "SHIFT",
+				action = act.Multiple({
+					"PopKeyTable",
+					act.PromptInputLine({
+						description = "Enter command to spawn in new Tab",
+						action = wezterm.action_callback(function(window, pane, line)
+							if line then
+								window:mux_window():spawn_tab({ args = { line } })
+							end
+						end),
+					}),
+				}),
+			},
 
 			-- Close Current Tab
 			{ key = "X", mods = "SHIFT", action = act.CloseCurrentTab({ confirm = true }) },
