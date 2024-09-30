@@ -39,3 +39,21 @@ notification of zoom level and the active key table.
 | *!*         | Split pane into it's own tab |
 | *enter or esc* | Exit pane management mode |
 
+
+## The Tab Management key table
+
+`<Leader> t` enters the terminal in to tab management mode. 
+
+| Key         | Action                       |
+|:-----------:|:-----------------------------|
+| *h, l*      | Activate tab in direction    |
+| *Arrow*     | Activate tab in direction    |
+| *SHIFT + h, l* | Move the active tab       |
+| *SHIFT + Arrow*| Move the active tab       |
+| *r*         | Rename active tab            |
+| *n*         | Create a new tab             |
+| *SHIFT + N* | Create a new tab with command |
+| *SHIFT + X* | Close current tab            |
+| *1-9*       | Activate tab                 |
+| *enter or esc* | Exit pane management mode |
+
