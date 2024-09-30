@@ -24,8 +24,8 @@ notification of zoom level and the active key table.
 Most keyboard stuff is pretty standards. 
 
 - `CMD-SHIFT-SPACE` is the leader.
-- `LEADER-ENTER` is quick copy.
-- `LEADER-SHIFT-ENTER` is copy mode.
+- `LEADER ENTER` is quick copy.
+- `LEADER SHIFT-ENTER` is copy mode.
 - See `keys.lua` for other nick nacks.
 
 
