@@ -19,6 +19,15 @@ notification of zoom level and the active key table.
 
 ![](docs/right_status.jpg)
 
+## Keyboard Shortcuts
+
+Most keyboard stuff is pretty standards. 
+
+- `CMD-SHIFT-SPACE` is the leader.
+- `LEADER-ENTER` is quick copy.
+- `LEADER-SHIFT-ENTER` is copy mode.
+- See `keys.lua` for other nick nacks.
+
 
 ## The Pane Management key table
 
