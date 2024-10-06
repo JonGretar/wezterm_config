@@ -18,14 +18,6 @@ local function make_config(config)
 		{ key = "L", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Right") },
 		{ key = "K", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Up") },
 		{ key = "J", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Down") },
-		{
-			key = "k",
-			mods = "SUPER",
-			action = act.Multiple({
-				act.ClearScrollback("ScrollbackAndViewport"),
-				act.SendKey({ key = "L", mods = "CTRL" }),
-			}),
-		},
 
 		-- Launchers
 		{
