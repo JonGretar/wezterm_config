@@ -14,6 +14,10 @@ config.command_palette_font_size = 18
 -- config.color_scheme = "midnight-in-mojave"
 config.color_scheme = "Catppuccin Macchiato"
 
+-- TermInfo stuff --
+-- See: https://wezfurlong.org/wezterm/config/lua/config/term.html
+config.term = "wezterm"
+
 config.default_cursor_style = "SteadyBar"
 config.enable_scroll_bar = false
 
