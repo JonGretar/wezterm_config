@@ -26,7 +26,7 @@ local function left_status(window, pane)
 
 	-- arrow color based on if tab is first pane
 	if helpers.get_tab_index(window) ~= 0 then
-		table.insert(elements, { Foreground = { Color = "#1e2030" } })
+		table.insert(elements, { Foreground = { Color = "#3b3052" } })
 	else
 		table.insert(elements, ARROW_FOREGROUND)
 	end
@@ -40,7 +40,7 @@ local function right_status(window, pane)
 
 	local SOLID_RIGHT_ARROW = nf.pl_left_hard_divider .. " "
 
-	local active_bg = "#1e2030"
+	local active_bg = "#3b3052"
 
 	if window:leader_is_active() then
 		-- table.insert(elements, "ResetAttributes")

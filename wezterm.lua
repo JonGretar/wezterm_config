@@ -11,8 +11,15 @@ config.native_macos_fullscreen_mode = true
 -- Visual Settings --
 config.font_size = 16
 config.command_palette_font_size = 18
--- config.color_scheme = "midnight-in-mojave"
-config.color_scheme = "Catppuccin Macchiato"
+config.color_scheme = "Molokai"
+config.colors = {
+	tab_bar = {
+		active_tab = {
+			bg_color = "#c6a0f6",
+			fg_color = "#000",
+		},
+	},
+}
 
 -- TermInfo stuff --
 -- See: https://wezfurlong.org/wezterm/config/lua/config/term.html
