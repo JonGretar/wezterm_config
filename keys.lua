@@ -9,6 +9,14 @@ local function make_config(config)
 		{ key = "P", mods = "CMD|SHIFT", action = wezterm.action.ActivateCommandPalette },
 		{ key = "Enter", mods = "LEADER", action = act.QuickSelect },
 		{ key = "Enter", mods = "LEADER|SHIFT", action = act.ActivateCopyMode },
+		{
+			key = "k",
+			mods = "CMD",
+			action = act.Multiple({
+				act.ClearScrollback("ScrollbackAndViewport"),
+				act.SendKey({ key = "L", mods = "CTRL" }),
+			}),
+		},
 		{ key = "LeftArrow", mods = "CMD|SHIFT", action = act.ActivateTabRelative(-1) },
 		{ key = "RightArrow", mods = "CMD|SHIFT", action = act.ActivateTabRelative(1) },
 		{ key = "LeftArrow", mods = "CMD|ALT", action = act.ActivateTabRelative(-1) },
