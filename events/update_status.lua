@@ -7,7 +7,7 @@ local function left_status(window, pane)
 	local ARROW_FOREGROUND = { Foreground = { Color = "#88b090" } }
 	local SOLID_LEFT_ARROW = " " .. nf.pl_right_hard_divider
 
-	table.insert(elements, { Foreground = { Color = "#1e2030" } })
+	table.insert(elements, { Foreground = { Color = "#000" } })
 	table.insert(elements, { Background = { Color = "#B087A8" } })
 
 	table.insert(elements, { Text = " " .. nf.dev_terminal .. " " })
