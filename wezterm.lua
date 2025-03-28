@@ -11,11 +11,11 @@ config.native_macos_fullscreen_mode = true
 -- Visual Settings --
 config.font_size = 16
 config.command_palette_font_size = 18
-config.color_scheme = "Molokai"
+config.color_scheme = "Zenburn"
 config.colors = {
 	tab_bar = {
 		active_tab = {
-			bg_color = "#c6a0f6",
+			bg_color = "#88b090",
 			fg_color = "#000",
 		},
 	},

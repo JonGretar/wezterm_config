@@ -4,11 +4,11 @@ local helpers = require("utils.helpers")
 
 local function left_status(window, pane)
 	local elements = {}
-	local ARROW_FOREGROUND = { Foreground = { Color = "#c6a0f6" } }
+	local ARROW_FOREGROUND = { Foreground = { Color = "#88b090" } }
 	local SOLID_LEFT_ARROW = " " .. nf.pl_right_hard_divider
 
 	table.insert(elements, { Foreground = { Color = "#1e2030" } })
-	table.insert(elements, { Background = { Color = "#b7bdf8" } })
+	table.insert(elements, { Background = { Color = "#B087A8" } })
 
 	table.insert(elements, { Text = " " .. nf.dev_terminal .. " " })
 
@@ -80,7 +80,7 @@ local function right_status(window, pane)
 
 	-- Date pill
 	local date = wezterm.strftime(" %Y-%m-%d %H:%M ")
-	table.insert(elements, { Background = { Color = "#b7bdf8" } })
+	table.insert(elements, { Background = { Color = "#B087A8" } })
 	table.insert(elements, { Foreground = { Color = active_bg } })
 	table.insert(elements, { Text = SOLID_RIGHT_ARROW })
 	table.insert(elements, { Foreground = { Color = "#1e2030" } })
