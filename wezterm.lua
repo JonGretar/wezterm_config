@@ -49,6 +49,12 @@ config.background = {
 			brightness = 0.1,
 		},
 	},
+	{
+		source = { File = wezterm.config_dir .. "/backgrounds/HelsinkiLogo.png" },
+		opacity = 0.07,
+		repeat_x = "NoRepeat",
+		-- attachment = { Parallax = 0.1 },
+	},
 }
 
 -- Load the event handlers --
