@@ -25,7 +25,6 @@ config.colors = {
 -- See: https://wezfurlong.org/wezterm/config/lua/config/term.html
 config.term = "wezterm"
 
-config.default_cursor_style = "SteadyBar"
 config.enable_scroll_bar = false
 
 -- Tab Config
