@@ -9,6 +9,7 @@ local function make_config(config)
 		{ key = "P", mods = "CMD|SHIFT", action = wezterm.action.ActivateCommandPalette },
 		{ key = "Enter", mods = "LEADER", action = act.QuickSelect },
 		{ key = "Enter", mods = "LEADER|SHIFT", action = act.ActivateCopyMode },
+		{ key = "Space", mods = "CTRL|SHIFT", action = act.ActivateCopyMode },
 		{
 			key = "k",
 			mods = "CMD",
