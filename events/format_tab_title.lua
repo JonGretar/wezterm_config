@@ -39,7 +39,11 @@ local function tab_title(tab_info)
 	end
 	-- Otherwise, use the title from the active pane
 	-- in that tab
-	return tab_info.active_pane.title
+	if tab_info.active_pane.title and tab_info.active_pane.title ~= "" then
+		return tab_info.active_pane.title
+	end
+
+	return "unnamed"
 end
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, conf, hover, max_width)
