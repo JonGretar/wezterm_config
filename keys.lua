@@ -173,6 +173,12 @@ local function make_config(config)
 			-- Create Tab
 			{ key = "n", action = act.SpawnTab("CurrentPaneDomain") },
 			{
+				key = "u",
+				action = act.SpawnCommandInNewTab({
+					args = { "/opt/homebrew/bin/nu" }
+				})
+			},
+			{
 				key = "N",
 				mods = "SHIFT",
 				action = act.Multiple({
