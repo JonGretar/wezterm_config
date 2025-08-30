@@ -22,11 +22,12 @@ local function make_config(config)
 		{ key = "RightArrow", mods = "CMD|ALT", action = act.ActivateTabRelative(1) },
 		{ key = "h", mods = "CMD|ALT", action = act.ActivateTabRelative(-1) },
 		{ key = "l", mods = "CMD|ALT", action = act.ActivateTabRelative(1) },
-		{ key = "t", mods = "CMD|SHIFT", action = act.ShowTabNavigator },
 		{ key = "H", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Left") },
 		{ key = "L", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Right") },
 		{ key = "K", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Up") },
 		{ key = "J", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Down") },
+
+		{ key = "t", mods = "CMD|SHIFT", action = act.SpawnCommandInNewTab({ args = { "/opt/homebrew/bin/nu" } }) },
 
 		-- Launchers
 		{
