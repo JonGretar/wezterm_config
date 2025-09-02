@@ -40,10 +40,17 @@ local function tab_title(tab_info)
 	-- Otherwise, use the title from the active pane
 	-- in that tab
 	if tab_info.active_pane.title and tab_info.active_pane.title ~= "" then
-		return tab_info.active_pane.title
+		local pane_title = tab_info.active_pane.title
+		-- Check if title looks like a path and extract last part
+		local last_part = pane_title:match("([^/\\]+)$")
+		if last_part then
+			return last_part
+		else
+			return pane_title
+		end
 	end
 
-	return "zsh"
+	return "unnamed"
 end
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, conf, hover, max_width)
