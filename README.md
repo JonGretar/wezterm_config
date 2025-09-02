@@ -26,6 +26,9 @@ Most keyboard stuff is pretty standards.
 - `CMD-SHIFT-SPACE` is the leader.
 - `LEADER ENTER` is quick copy.
 - `LEADER SHIFT-ENTER` is copy mode.
+- `LEADER l` starts the launch bar.
+- `LEADER s` workspace selector.
+- `LEADER S` rename workspace.
 - See `keys.lua` for other nick nacks.
 
 
@@ -65,4 +68,3 @@ Most keyboard stuff is pretty standards.
 | *SHIFT + X* | Close current tab            |
 | *1-9*       | Activate tab                 |
 | *enter or esc* | Exit pane management mode |
-

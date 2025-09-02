@@ -2,6 +2,12 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 local helpers = require("utils.helpers")
 
+-- This causes `wezterm` to act as though it was started as
+-- `wezterm connect unix` by default, connecting to the unix
+-- domain on startup.
+config.default_gui_startup_args = { 'connect', 'unix' }
+config.default_workspace = "~"
+
 -- Visual Decorations --
 config.window_background_opacity = 0.8
 config.macos_window_background_blur = 15
@@ -90,6 +96,9 @@ config.launch_menu = {
 		-- set_environment_variables = { FOO = "bar" },
 	},
 }
+
+-- Load some plugins
+
 
 -- Load the event handlers --
 require("events.gui_startup")

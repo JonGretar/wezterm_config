@@ -1,5 +1,6 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
+local mux = wezterm.mux
 
 -- Create a function that takes config parameters and returns a config table
 local function make_config(config)
@@ -39,6 +40,20 @@ local function make_config(config)
 			key = "s",
 			mods = "LEADER",
 			action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }),
+        },
+		{
+			key = 'S',
+			mods = 'LEADER|SHIFT',
+			action = act.PromptInputLine {
+				description = 'Enter new name for session',
+				action = wezterm.action_callback(
+					function(window, pane, line)
+						if line then
+							mux.rename_workspace(window:mux_window():get_workspace(),line)
+						end
+					end
+				),
+			}
 		},
 
 		-- Acticate Pane Management mode.

@@ -12,7 +12,7 @@ local function left_status(window, pane)
 
 	table.insert(elements, { Text = " " .. nf.dev_terminal .. " " })
 
-	if pane:get_domain_name() ~= "local" then
+	if pane:get_domain_name() ~= "unix" then
 		table.insert(elements, { Text = " " .. nf.pl_right_soft_divider })
 		table.insert(elements, { Text = " " .. nf.cod_workspace_trusted })
 		table.insert(elements, { Text = " " .. pane:get_domain_name() })
