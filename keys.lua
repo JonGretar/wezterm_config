@@ -1,6 +1,8 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
 local mux = wezterm.mux
+local sessionizer = require("plugins.sessionizer")
+
 
 -- Create a function that takes config parameters and returns a config table
 local function make_config(config)
@@ -39,7 +41,8 @@ local function make_config(config)
 		{
 			key = "s",
 			mods = "LEADER",
-			action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }),
+			-- action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }),
+            action = sessionizer.show,
         },
 		{
 			key = 'S',

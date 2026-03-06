@@ -6,7 +6,7 @@ local helpers = require("utils.helpers")
 -- `wezterm connect unix` by default, connecting to the unix
 -- domain on startup.
 config.default_gui_startup_args = { 'connect', 'unix' }
-config.default_workspace = "~"
+-- config.default_workspace = "~"
 
 -- Visual Decorations --
 config.window_background_opacity = 0.8
@@ -98,7 +98,7 @@ config.launch_menu = {
 }
 
 -- Load some plugins
-
+require("plugins.sessionizer")
 
 -- Load the event handlers --
 require("events.gui_startup")
