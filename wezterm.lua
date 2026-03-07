@@ -5,7 +5,7 @@ local helpers = require("utils.helpers")
 -- This causes `wezterm` to act as though it was started as
 -- `wezterm connect unix` by default, connecting to the unix
 -- domain on startup.
-config.default_gui_startup_args = { 'connect', 'unix' }
+config.default_gui_startup_args = { "connect", "unix" }
 -- config.default_workspace = "~"
 
 -- Visual Decorations --
@@ -74,20 +74,20 @@ config.background = {
 -- Launch Menu Items --
 config.launch_menu = {
 	{
-		label = 'BTop',
-		args = { '/opt/homebrew/bin/btop' },
+		label = "BTop",
+		args = { "/opt/homebrew/bin/btop" },
 	},
 	{
-		label = 'Nushell',
-		args = { '/opt/homebrew/bin/nu', '-l' },
+		label = "Nushell",
+		args = { "/opt/homebrew/bin/nu", "-l" },
 	},
 	{
 		-- Optional label to show in the launcher. If omitted, a label
 		-- is derived from the `args`
-		label = 'Bash',
+		label = "Bash",
 		-- The argument array to spawn.  If omitted the default program
 		-- will be used as described in the documentation above
-		args = { 'bash', '-l' },
+		args = { "bash", "-l" },
 
 		-- You can specify an alternative current working directory;
 		-- if you don't specify one then a default based on the OSC 7

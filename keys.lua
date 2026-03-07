@@ -3,7 +3,6 @@ local act = wezterm.action
 local mux = wezterm.mux
 local sessionizer = require("plugins.sessionizer")
 
-
 -- Create a function that takes config parameters and returns a config table
 local function make_config(config)
 	config.leader = { key = "Space", mods = "CMD|SHIFT", timeout_milliseconds = 2000 }
@@ -29,9 +28,7 @@ local function make_config(config)
 		{ key = "L", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Right") },
 		{ key = "K", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Up") },
 		{ key = "J", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Down") },
-
 		{ key = "t", mods = "CMD|SHIFT", action = act.SpawnCommandInNewTab({ args = { "/opt/homebrew/bin/nu" } }) },
-
 		-- Launchers
 		{
 			key = "l",
@@ -42,23 +39,20 @@ local function make_config(config)
 			key = "s",
 			mods = "LEADER",
 			-- action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }),
-            action = sessionizer.show,
-        },
-		{
-			key = 'S',
-			mods = 'LEADER|SHIFT',
-			action = act.PromptInputLine {
-				description = 'Enter new name for session',
-				action = wezterm.action_callback(
-					function(window, pane, line)
-						if line then
-							mux.rename_workspace(window:mux_window():get_workspace(),line)
-						end
-					end
-				),
-			}
+			action = sessionizer.show,
 		},
-
+		{
+			key = "S",
+			mods = "LEADER|SHIFT",
+			action = act.PromptInputLine({
+				description = "Enter new name for session",
+				action = wezterm.action_callback(function(window, pane, line)
+					if line then
+						mux.rename_workspace(window:mux_window():get_workspace(), line)
+					end
+				end),
+			}),
+		},
 		-- Acticate Pane Management mode.
 		{
 			key = "w",
@@ -71,7 +65,6 @@ local function make_config(config)
 				prevent_fallback = true,
 			}),
 		},
-
 		-- Acticate Tab Management mode.
 		{
 			key = "t",
@@ -97,7 +90,6 @@ local function make_config(config)
 			{ key = "k", action = act.ActivatePaneDirection("Up") },
 			{ key = "DownArrow", action = act.ActivatePaneDirection("Down") },
 			{ key = "j", action = act.ActivatePaneDirection("Down") },
-
 			-- Pane Resizing
 			{ key = "LeftArrow", mods = "SHIFT", action = act.AdjustPaneSize({ "Left", 1 }) },
 			{ key = "h", mods = "SHIFT", action = act.AdjustPaneSize({ "Left", 1 }) },
@@ -107,24 +99,18 @@ local function make_config(config)
 			{ key = "k", mods = "SHIFT", action = act.AdjustPaneSize({ "Up", 1 }) },
 			{ key = "DownArrow", mods = "SHIFT", action = act.AdjustPaneSize({ "Down", 1 }) },
 			{ key = "j", mods = "SHIFT", action = act.AdjustPaneSize({ "Down", 1 }) },
-
 			-- Split Pane
 			{ key = "s", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 			{ key = "v", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
-
 			-- Rotate Panes
 			{ key = "r", action = act.RotatePanes("Clockwise") },
 			{ key = "R", mods = "SHIFT", action = act.RotatePanes("CounterClockwise") },
-
 			-- Swap pane position
 			{ key = "m", action = act.PaneSelect({ mode = "SwapWithActive" }) },
-
 			-- Zoom pane
 			{ key = "z", action = act.TogglePaneZoomState },
-
 			-- Close the active pane
 			{ key = "X", mods = "SHIFT", action = act.CloseCurrentPane({ confirm = false }) },
-
 			-- Take the selected pane and create a new tab with it.
 			{
 				key = "!",
@@ -132,7 +118,6 @@ local function make_config(config)
 					local tab, window = pane:move_to_new_tab()
 				end),
 			},
-
 			-- Tab Selection
 			{ key = "1", action = act.ActivateTab(0) },
 			{ key = "2", action = act.ActivateTab(1) },
@@ -143,25 +128,21 @@ local function make_config(config)
 			{ key = "7", action = act.ActivateTab(6) },
 			{ key = "8", action = act.ActivateTab(7) },
 			{ key = "9", action = act.ActivateTab(8) },
-
 			-- Exit pane management mode
 			{ key = "Escape", action = "PopKeyTable" },
 			{ key = "Enter", action = "PopKeyTable" },
 		},
 		TabManagement = {
-
 			-- Select Tab
 			{ key = "LeftArrow", action = act.ActivateTabRelative(-1) },
 			{ key = "h", action = act.ActivateTabRelative(-1) },
 			{ key = "RightArrow", action = act.ActivateTabRelative(1) },
 			{ key = "l", action = act.ActivateTabRelative(1) },
-
 			-- Move Tab
 			{ key = "LeftArrow", mods = "SHIFT", action = act.MoveTabRelative(-1) },
 			{ key = "h", mods = "SHIFT", action = act.MoveTabRelative(-1) },
 			{ key = "RightArrow", mods = "SHIFT", action = act.MoveTabRelative(1) },
 			{ key = "l", mods = "SHIFT", action = act.MoveTabRelative(1) },
-
 			-- Activate Tab Number
 			{ key = "1", action = act.ActivateTab(0) },
 			{ key = "2", action = act.ActivateTab(1) },
@@ -172,7 +153,6 @@ local function make_config(config)
 			{ key = "7", action = act.ActivateTab(6) },
 			{ key = "8", action = act.ActivateTab(7) },
 			{ key = "9", action = act.ActivateTab(8) },
-
 			-- Rename Tab
 			{
 				key = "r",
@@ -188,14 +168,13 @@ local function make_config(config)
 					}),
 				}),
 			},
-
 			-- Create Tab
 			{ key = "n", action = act.SpawnTab("CurrentPaneDomain") },
 			{
 				key = "u",
 				action = act.SpawnCommandInNewTab({
-					args = { "/opt/homebrew/bin/nu" }
-				})
+					args = { "/opt/homebrew/bin/nu" },
+				}),
 			},
 			{
 				key = "N",
@@ -212,10 +191,8 @@ local function make_config(config)
 					}),
 				}),
 			},
-
 			-- Close Current Tab
 			{ key = "X", mods = "SHIFT", action = act.CloseCurrentTab({ confirm = true }) },
-
 			-- Exit tab management mode
 			{ key = "Escape", action = "PopKeyTable" },
 			{ key = "Enter", action = "PopKeyTable" },
