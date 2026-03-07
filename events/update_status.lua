@@ -1,6 +1,8 @@
 local wezterm = require("wezterm")
 local nf = wezterm.nerdfonts
 local helpers = require("utils.helpers")
+local cpu = require("utils.cpu")
+local ram = require("utils.ram")
 
 local function left_status(window, pane)
 	local elements = {}
@@ -87,14 +89,30 @@ local function right_status(window, pane)
 		table.insert(elements, "ResetAttributes")
 	end
 
-	-- Date pill
+	-- Info region
 	local date = wezterm.strftime(" %Y-%m-%d %H:%M ")
 	table.insert(elements, { Background = { Color = "#B087A8" } })
 	table.insert(elements, { Foreground = { Color = active_bg } })
 	table.insert(elements, { Text = SOLID_RIGHT_ARROW })
 	table.insert(elements, { Foreground = { Color = "#1e2030" } })
-	table.insert(elements, { Text = nf.fa_clock_o .. date })
 
+	-- CPU pill
+    table.insert(elements, { Text = nf.oct_cpu .. " " })
+    table.insert(elements, { Text = cpu.update() })
+
+    -- RAM pill
+    table.insert(elements, { Text = " " .. nf.pl_left_soft_divider .. " " })
+    table.insert(elements, { Text = nf.cod_server .. " " })
+    table.insert(elements, { Text = ram.update() })
+
+	-- Date pill
+    table.insert(elements, { Text = " " .. nf.pl_left_soft_divider .. " " })
+    table.insert(elements, { Text = nf.fa_clock_o .. date })
+
+
+
+
+    table.insert(elements, { Text = "  " })
 	window:set_right_status(wezterm.format(elements))
 end
 

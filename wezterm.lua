@@ -12,7 +12,12 @@ config.default_gui_startup_args = { 'connect', 'unix' }
 config.window_background_opacity = 0.8
 config.macos_window_background_blur = 15
 config.native_macos_fullscreen_mode = true
--- config.window_decorations = "TITLE | RESIZE"
+config.window_decorations = "RESIZE"
+config.window_padding = {}
+config.window_padding.left = 10
+config.window_padding.right = 10
+config.window_padding.top = 0
+config.window_padding.bottom = 0
 
 -- Visual Settings --
 config.font_size = 16
