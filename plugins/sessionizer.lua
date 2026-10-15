@@ -6,7 +6,7 @@ local sessionizer = wezterm.plugin.require("https://github.com/mikkasendke/sessi
 local history = wezterm.plugin.require "https://github.com/mikkasendke/sessionizer-history"
 
 local my_schema = {
-    options = {callback = history.Wrapper(sessionizer.DefaultCallback)},
+    options = { callback = history.Wrapper(sessionizer.DefaultCallback) },
     {
         history.MostRecentWorkspace {},
         processing = {
@@ -17,9 +17,9 @@ local my_schema = {
             )
         }
     },
-    sessionizer.DefaultWorkspace {label_overwrite = "🏠 Default"},
+    sessionizer.DefaultWorkspace { label_overwrite = "🏠 Default" },
     {
-        sessionizer.AllActiveWorkspaces {filter_default = true, filter_current = true},
+        sessionizer.AllActiveWorkspaces { filter_default = true, filter_current = true },
         processing = {
             sessionizer.for_each_entry(
                 function(entry)
@@ -32,10 +32,10 @@ local my_schema = {
         local res = {}
         local success, stdout, stderr =
             wezterm.run_child_process {
-            "ls",
-            "-1",
-            wezterm.home_dir .. "/Developer"
-        }
+                "ls",
+                "-1",
+                wezterm.home_dir .. "/Developer"
+            }
         for line in stdout:gmatch "[^\n]+" do
             table.insert(
                 res,
